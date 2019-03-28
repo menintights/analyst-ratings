@@ -14,7 +14,7 @@ class Chart extends React.Component {
   let currentPrice = this.props.currentPrice
   let average = this.props.average
 
-  console.log(price, currentPrice, average)
+  console.log(price, Math.floor(currentPrice))
   let divStyle={
    height: occurence*4,
    width: "12px",
@@ -25,9 +25,9 @@ class Chart extends React.Component {
    position: "absolution"
   }
   let lineStyle={
-   height: 120,
+   height: this.props.highestOccurence * 4 + 20,
    width: "1px",
-   display: price === Math.floor(currentPrice) ? "inline-block" : 'none',
+   display: price == Math.floor(currentPrice) ? "inline-block" : 'none',
    position: "absolution",
    background: "#21CE99"
   }

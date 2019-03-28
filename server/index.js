@@ -18,7 +18,7 @@ app.get('/', (req,res)=>{
  let companyName = faker.company.companyName();
  let price = faker.commerce.price();
  for(let i = 0; i < 252; i++){
-  let range = Math.floor(Math.random()*100) + 1;
+  let range = Math.floor(Math.random()*100);
   range *= Math.floor(Math.random()*2) == 1 ? 0.05 : -0.047;
   price *= (1 + range/100);
   price = price.toFixed(2);
