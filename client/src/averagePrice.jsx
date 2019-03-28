@@ -28,7 +28,6 @@ class AveragePrice extends React.Component {
   let compare = "";
   let adjusted = 0;
 
-
   arr.map((x)=> sum+=x);
 
   while(standardize){
@@ -81,7 +80,7 @@ class AveragePrice extends React.Component {
     </div>
    </div>
    {allPriceData.map((priceData)=> 
-    <Chart priceData = {priceData} average={average/standardized} currentPrice={currentPrice} highestOccurence={highestOccurence}/>
+    <Chart key={priceData[0]} priceData = {priceData} average={average/standardized} currentPrice={currentPrice} highestOccurence={highestOccurence}/>
    )}
    <div>
     <div style={{width: currentPriceDistance, height: "1px", background: "grey", marginBottom: "10px", display: "inline-block"}}></div>
