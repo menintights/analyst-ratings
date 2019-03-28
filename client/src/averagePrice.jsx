@@ -68,7 +68,6 @@ class AveragePrice extends React.Component {
   ? currentPriceDistance = onlyPriceData.indexOf(Math.ceil(currentPrice)+1) * 20 - 7 
   : currentPriceDistance = onlyPriceData.indexOf(Math.floor(currentPrice)+1) * 20 - 7 
 
-
   percentage = Math.floor((currentPrice/(average/standardized)-1) * 100)
   compare = percentage >= 0 ? percentage + "% Higher" : Math.abs(percentage) + "% Lower"
 
