@@ -41,10 +41,9 @@ class AveragePrice extends React.Component {
       collectPriceData.push([tempLow.toFixed(2), tempHigh.toFixed(2)]);
     }
     // find the spot for current price
-    currentPriceDistance = currentSpot * 3 / 100 * 655;
-
+    currentPriceDistance = currentSpot * 3 / 100 * 655 + 500;
     // find the spot for average price
-    averagePriceDistance = averageSpot * 3 / 100 * 655;
+    averagePriceDistance = averageSpot * 3 / 100 * 655 + 100;
 
     // console.log(currentPriceDistance, averagePriceDistance)
 
@@ -83,11 +82,11 @@ class AveragePrice extends React.Component {
    <h2>Price Paid on Robinhood</h2>
    <div id = 'compare'>
     <div style={{ position: 'absolute', left: currentPriceDistance - 25 }}>
-      <p id = 'compare'>{compare}</p>
+      {/* <p id = 'compare'>{compare}</p> */}
       <p id = 'rightNow'>Right Now</p>
     </div>
    </div>
-   <div id = 'chart'>{allData.map(priceData => <Chart key={priceData[0]} priceData = {priceData} average={average} currentPrice={currentPrice}/>)}</div>
+   {/* <div id = 'chart'>{allData.map(priceData => <Chart key={priceData[0]} priceData = {priceData} average={average} currentPrice={currentPrice}/>)}</div> */}
    <div>
     <span id = 'bottomFrontLine' style={{ width: currentPriceDistance }}></span>
     <span id = 'circle' ></span>
