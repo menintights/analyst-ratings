@@ -1,5 +1,6 @@
 import React from 'react';
 // import $ from 'jquery';
+import Chart from './chart.jsx';
 
 class AveragePrice extends React.Component {
   constructor(props) {
