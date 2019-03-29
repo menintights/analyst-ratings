@@ -83,9 +83,9 @@ class AveragePrice extends React.Component {
     return (
   <div>
    <h2>Price Paid on Robinhood</h2>
-   <div style={{ marginBottom: '60' }}>
+   <div id = 'compare'>
     <div style={{ position: 'absolute', left: currentPriceDistance - 25 }}>
-      <p style={{ fontSize: '16px', margin: '0 0 0 0' }}>{compare}</p>
+      <p id = 'compare'>{compare}</p>
       <p id = 'rightNow'>Right Now</p>
     </div>
    </div>
@@ -93,16 +93,12 @@ class AveragePrice extends React.Component {
    <div>
     <span id = 'bottomFrontLine' style={{ width: currentPriceDistance }}></span>
     <span id = 'circle' ></span>
-    <span id = 'bottomRareLine' style={{
-      width: 680 - currentPriceDistance,
-    }}></span>
+    <span id = 'bottomRareLine' style={{ width: 680 - currentPriceDistance }}></span>
    </div>
 
     <div style={{ display: 'inline-block' }}>
-      <div style={{ width: '80px', fontSize: '14px', display: 'inline-block' }}>52 Week Low ${lowest}</div>
-      <div style={{
-        left: averagePriceDistance, width: '80px', fontSize: '14px', display: 'inline-block', textAlign: 'center', position: 'absolute',
-      }}><p style={{ margin: '0 0 0 0' }}>Average Price Paid</p><p style={{ margin: '0 0 0 0' }}>${average}</p></div>
+      <div id = 'lowest'>52 Week Low ${lowest}</div>
+      <div id = 'averagePricePaid' style={{ left: averagePriceDistance }}><p style={{ margin: '0 0 0 0' }}>Average Price Paid</p><p style={{ margin: '0 0 0 0' }}>${average}</p></div>
       <div style={{
         width: '85px', fontSize: '14px', display: 'inline-block', textAlign: 'right', position: 'absolute', left: 600,
       }}>52 Week High ${highest}</div>

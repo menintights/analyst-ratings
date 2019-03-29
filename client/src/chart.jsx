@@ -15,9 +15,12 @@ class Chart extends React.Component {
     const current = this.props.currentPrice;
     const average = Number(this.props.average);
     let highlight = false;
-    if( (average < lowest && highest <= current) || (average > lowest && highest >= current)) {
-      highlight = true
+    if (average < lowest && highest <= current) {
+      highlight = true;
+    } else if (average > lowest && highest >= current) {
+      highlight = true;
     }
+
     const divStyle = {
       height: occurence * 4,
       width: '12px',
