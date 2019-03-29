@@ -63,15 +63,13 @@ class AveragePrice extends React.Component {
           allPriceBar[u].push(sortPriceData[i]);
         }
       }
+      for (let i = 0; i < allPriceBar.length; i += 1) {
+        allData[i] = [];
+        allData[i].push(collectPriceData[i][0]);
+        allData[i].push(collectPriceData[i][1]);
+        allData[i].push(allPriceBar[i].length);
+      }
     }
-
-    for (let i = 0; i < allPriceBar.length; i += 1) {
-      allData[i] = [];
-      allData[i].push(collectPriceData[i][0]);
-      allData[i].push(collectPriceData[i][1]);
-      allData[i].push(allPriceBar[i].length);
-    }
-
     percentage = Math.floor((currentPrice / average - 1) * 100);
     // Percentage that compare between current Price and average Price
     if (percentage >= 0) {

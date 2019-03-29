@@ -19,11 +19,8 @@ const save = (data) => {
     stockObj.price = data[i].price;
     stockObj.week = data[i].week;
     const stock = new StockRepo(stockObj);
-    console.log(stock);
-    stock.save((err) => {
-      if (err) console.log(err);
-      // console.log("success")
-    });
+    // console.log(stock);
+    stock.save();
   }
 };
 

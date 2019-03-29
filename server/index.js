@@ -28,8 +28,8 @@ app.get('/', (req, res) => {
   }
 
   db.save(stock, (err, success) => {
-    if (err) console.log(err);
-    console.log(success);
+    // if (err) console.log('err', err);
+    // console.log(success);
   });
   res.status(200).json(stock);
 });

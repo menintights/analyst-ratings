@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { shallow } from 'enzyme';
 
 // Components
-import WelcomeMessage from './WelcomeMessage';
+import WelcomeMessage from './WelcomeMessage.jsx';
 
 function setup() {
   const props = {
@@ -12,7 +13,7 @@ function setup() {
   return { wrapper, props };
 }
 
-describe ('WelcomeMessage Test Suite', () => {
+describe('WelcomeMessage Test Suite', () => {
   it('Should have an image', () => {
     const { wrapper } = setup();
     expect(wrapper.find('img').exists()).toBe(true);
