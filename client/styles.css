@@ -3,3 +3,36 @@ body {
  color: black;
 }
 
+p#rightNow {
+ font-size: 13px;
+ margin: 0 0 0 0; 
+ text-align: center;
+}
+
+span#bottomFrontLine {
+ height: 1px;
+ background: grey;
+ margin-bottom: 10px;
+ display: inline-block
+}
+
+span#circle {
+ width: 15px;
+ height: 15px;
+ background: #21CE99;
+ display: inline-block;
+ margin-top: -4px;
+ position: absolute;
+ border-radius: 50%;
+}
+
+span#bottomRareLine {
+ height: 1px;
+ background: grey;
+ margin-bottom: 10px; 
+ display: inline-block;
+}
+
+div#chart {
+ margin-left: 5px;
+}

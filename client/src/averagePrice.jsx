@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 import React from 'react';
 // import $ from 'jquery';
+// eslint-disable-next-line no-unused-vars
 import Chart from './chart.jsx';
 
 class AveragePrice extends React.Component {
@@ -84,21 +86,16 @@ class AveragePrice extends React.Component {
    <div style={{ marginBottom: '60' }}>
     <div style={{ position: 'absolute', left: currentPriceDistance - 25 }}>
       <p style={{ fontSize: '16px', margin: '0 0 0 0' }}>{compare}</p>
-      <p style={{ fontSize: '13px', margin: '0 0 0 0', textAlign: 'center' }}>Right Now</p>
+      <p id = 'rightNow'>Right Now</p>
     </div>
    </div>
-   {allData.map(priceData => <Chart key={priceData[0]} priceData = {priceData} average={average} currentPrice={currentPrice} allData={allData}/>)}
-   {/* {allPriceData.map(priceData => <Chart key={priceData[0]} priceData = {priceData} average={average / standardized} currentPrice={currentPrice} highestOccurence={highestOccurence} allData={allData}/>)} */}
+   <div id = 'chart'>{allData.map(priceData => <Chart key={priceData[0]} priceData = {priceData} average={average} currentPrice={currentPrice}/>)}</div>
    <div>
-    <div style={{
-      width: currentPriceDistance, height: '1px', background: 'grey', marginBottom: '10px', display: 'inline-block',
-    }}></div>
-    <div style={{
-      width: 15, height: 15, background: '#21CE99', display: 'inline-block', marginTop: '-4px', position: 'absolute', borderRadius: 50,
-    }}></div>
-    <div style={{
-      width: 680 - currentPriceDistance, height: '1px', background: 'grey', marginBottom: '10px', display: 'inline-block',
-    }}></div>
+    <span id = 'bottomFrontLine' style={{ width: currentPriceDistance }}></span>
+    <span id = 'circle' ></span>
+    <span id = 'bottomRareLine' style={{
+      width: 680 - currentPriceDistance,
+    }}></span>
    </div>
 
     <div style={{ display: 'inline-block' }}>
