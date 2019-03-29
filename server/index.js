@@ -12,8 +12,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.get('/', (req, res) => {
-  const stock = [];
-  const companyName = faker.company.companyName();
+  let stock = [];
+  let companyName = faker.company.companyName();
   let price = faker.commerce.price();
   for (let i = 0; i < 252; i += 1) {
     let range = Math.floor(Math.random() * 100);

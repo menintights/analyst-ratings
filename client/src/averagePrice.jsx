@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable max-len */
 import React from 'react';
 // import $ from 'jquery';
@@ -12,26 +13,26 @@ class AveragePrice extends React.Component {
   }
 
   render() {
-    const arr = this.props.priceData;
-    const highest = Math.max(...this.props.priceData);
-    const lowest = Math.min(...this.props.priceData);
-    const range = (highest - lowest) / 33;
-    const currentPrice = this.props.priceData[this.props.priceData.length - 1];
+    let arr = this.props.priceData;
+    let highest = Math.max(...this.props.priceData);
+    let lowest = Math.min(...this.props.priceData);
+    let range = (highest - lowest) / 33;
+    let currentPrice = this.props.priceData[this.props.priceData.length - 1];
     let averagePriceDistance = 0;
     let currentPriceDistance = 0;
-    const average = (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(2);
+    let average = (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(2);
     let percentage = 0;
     let compare = '';
     let currentSpot = 0;
     let averageSpot = 0;
-    const sortPriceData = arr.slice(0).sort();
-    const collectPriceData = [];
-    const allPriceBar = [];
-    const allData = [];
+    let sortPriceData = arr.slice(0).sort();
+    let collectPriceData = [];
+    let allPriceBar = [];
+    let allData = [];
 
     for (let i = 0; i < 33; i += 1) {
-      const tempLow = lowest + range * i;
-      const tempHigh = lowest + range * (i + 1);
+      let tempLow = lowest + range * i;
+      let tempHigh = lowest + range * (i + 1);
       if (currentPrice > tempLow && currentPrice < tempHigh) {
         currentSpot = i;
       }
@@ -41,13 +42,16 @@ class AveragePrice extends React.Component {
       collectPriceData.push([tempLow.toFixed(2), tempHigh.toFixed(2)]);
     }
     // find the spot for current price
-    currentPriceDistance = currentSpot * 3 / 100 * 655 + 500;
+    currentPriceDistance = currentSpot * 20;
     // find the spot for average price
-    averagePriceDistance = averageSpot * 3 / 100 * 655 + 100;
-
+    if(average > currentPrice) {
+      averagePriceDistance = averageSpot * 20 - 15;
+    } else {
+      averagePriceDistance = averageSpot * 20 + 5;
+    }
     // console.log(currentPriceDistance, averagePriceDistance)
 
-    if (highest > 0) {
+    if (sortPriceData.length > 0) {
       for (let i = 0, u = 0; i < sortPriceData.length; i += 1) {
         if (sortPriceData[i] <= Number(collectPriceData[u][1])) {
           if (allPriceBar[u] === undefined) {
@@ -66,7 +70,11 @@ class AveragePrice extends React.Component {
         allData[i] = [];
         allData[i].push(collectPriceData[i][0]);
         allData[i].push(collectPriceData[i][1]);
-        allData[i].push(allPriceBar[i].length);
+        if (allPriceBar[i] === undefined) {
+          allData[i].push(1);
+        } else {
+          allData[i].push(allPriceBar[i].length);
+        }
       }
     }
     percentage = Math.floor((currentPrice / average - 1) * 100);
@@ -81,12 +89,14 @@ class AveragePrice extends React.Component {
   <div>
    <h2>Price Paid on Robinhood</h2>
    <div id = 'compare'>
-    <div style={{ position: 'absolute', left: currentPriceDistance - 25 }}>
-      {/* <p id = 'compare'>{compare}</p> */}
+    <div style={{ position: 'absolute', left: currentPriceDistance - 23 }}>
+      <p id = 'compare'>{compare}</p>
       <p id = 'rightNow'>Right Now</p>
     </div>
    </div>
-   {/* <div id = 'chart'>{allData.map(priceData => <Chart key={priceData[0]} priceData = {priceData} average={average} currentPrice={currentPrice}/>)}</div> */}
+   <div id = 'chart' style={{ marginLeft: 7 }}>
+    {allData.map(priceData => <Chart key={priceData[0]} priceData = {priceData} average={average} currentPrice={currentPrice} highest={highest}/>)}
+   </div>
    <div>
     <span id = 'bottomFrontLine' style={{ width: currentPriceDistance }}></span>
     <span id = 'circle' ></span>
@@ -96,7 +106,7 @@ class AveragePrice extends React.Component {
     <div style={{ display: 'inline-block' }}>
       <div id = 'lowest'>52 Week Low ${lowest}</div>
       <div id = 'averagePricePaid' style={{ left: averagePriceDistance }}><p style={{ margin: '0 0 0 0' }}>Average Price Paid</p><p style={{ margin: '0 0 0 0' }}>${average}</p></div>
-      <div style={{
+      <div id = 'highest' style={{
         width: '85px', fontSize: '14px', display: 'inline-block', textAlign: 'right', position: 'absolute', left: 600,
       }}>52 Week High ${highest}</div>
     </div>

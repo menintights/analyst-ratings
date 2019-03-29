@@ -26,7 +26,7 @@ const save = (data) => {
 
 const get = (callback) => {
   StockRepo.find((err, data) => {
-    if (err) return err;
+    if (err) console.log(err);
     callback(data);
   });
 };

@@ -22,10 +22,10 @@ class Chart extends React.Component {
     }
 
     const divStyle = {
-      height: occurence * 4,
+      height: occurence * 4.3 > 130 ? 130 : occurence * 4.3,
       width: '12px',
       // background: '#F45531',
-      background: highlight ? '#21CE99' : 'grey',
+      background: highlight ? '#21CE99' : 'black',
       margin: '10px 4px 10px 4px',
       display: 'inline-block',
       position: 'absolution',

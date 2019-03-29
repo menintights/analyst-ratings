@@ -28,10 +28,6 @@ class App extends React.Component {
   <div>
    {/* <div>Connected!</div> */}
    <AveragePrice priceData={this.state.price}/>
-   {/* {this.state.price.map((prices)=>
-    <div>{prices}</div>
-   )} */}
-
   </div>
     );
   }
