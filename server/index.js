@@ -4,14 +4,15 @@ const cors = require('cors');
 
 const app = express();
 const port = 3000;
-const faker = require('faker');
 const db = require('../database/index.js');
+// const file = require('../client/dist/bundle.js');
 
-// app.use(express.static(__dirname + ''));
+app.use(express.static(`${__dirname}/../client/dist`));
+// app.use(express.static(`${__dirname}../client/dist`));
 app.use(cors());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ useNewUrlParser: true }));
 app.use(bodyParser.json());
-app.get('/', (req, res) => {
+app.get('/stock', (req, res) => {
   // let stock = [];
   // let companyName = faker.company.companyName();
   // let price = faker.commerce.price();
