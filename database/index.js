@@ -1,35 +1,52 @@
 const mongoose = require('mongoose');
+const Stock = require('./Stock.js');
 
-mongoose.connect('mongodb://localhost/stock');
+const mongoUri = 'mongodb://localhost/stock';
 
-const stockSchema = new mongoose.Schema({
-  id: Number,
-  stockName: String,
-  price: Number,
-  week: Number,
-});
+mongoose.connect(mongoUri);
+const db = mongoose.connection;
 
-const StockRepo = mongoose.model('StockRepo', stockSchema);
+// mongoose.connect('mongodb://localhost/stock');
 
-const save = (data) => {
-  const stockObj = {};
-  for (let i = 0; i < data.length; i += 1) {
-    stockObj.id = i;
-    stockObj.stockName = data[i].stockName;
-    stockObj.price = data[i].price;
-    stockObj.week = data[i].week;
-    const stock = new StockRepo(stockObj);
-    // console.log(stock);
-    stock.save();
-  }
-};
+// const stockSchema = new mongoose.Schema({
+//   id: Number,
+//   stockName: String,
+//   price: Number,
+//   week: Number,
+// });
+
+// const StockRepo = mongoose.model('StockRepo', stockSchema);
+
+// const save = (data) => {
+//   const stockObj = {};
+//   console.log(data);
+//   for (let i = 0; i < data.length; i += 1) {
+//     stockObj.id = i;
+//     stockObj.stockName = data[i].stockName;
+//     stockObj.price = data[i].price;
+//     stockObj.week = data[i].week;
+//     const stock = new StockRepo(stockObj);
+//     // console.log(stock);
+//     stock.create();
+//   }
+// };
 
 const get = (callback) => {
-  StockRepo.find((err, data) => {
+  console.log(Stock.find({ week: 23 }));
+  Stock.find((err, data) => {
     if (err) console.log(err);
     callback(data);
   });
 };
 
-module.exports.save = save;
+// const get = (id, callback) => {
+//  const query = { id };
+//  Stock.find(query, (err, data) => {
+//    if (err) callback(err);
+//    callback(data);
+//  });
+// };
+
+module.exports = db;
+// module.exports.save = save;
 module.exports.get = get;
