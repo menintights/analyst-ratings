@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const stockSchema = new mongoose.Schema({
-  id: Number,
-  stockName: String,
+  id: String,
+  company: String,
   price: Number,
-  week: Number,
+  day: Number,
+  ticker: String,
 });
 
 const Stock = mongoose.model('Stock', stockSchema);

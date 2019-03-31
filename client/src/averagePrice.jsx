@@ -44,7 +44,7 @@ class AveragePrice extends React.Component {
     // find the spot for current price
     currentPriceDistance = currentSpot * 20;
     // find the spot for average price
-    if(average > currentPrice) {
+    if (average > currentPrice) {
       averagePriceDistance = averageSpot * 20 - 15;
     } else {
       averagePriceDistance = averageSpot * 20 + 5;

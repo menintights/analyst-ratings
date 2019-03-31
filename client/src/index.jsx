@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
@@ -13,7 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.get('http://localhost:3000/1', (stockData) => {
+    $.get('http://localhost:3000/stock/003', (stockData) => {
       const priceData = [];
       stockData.map(stock => priceData.push(stock.price));
       this.setState({

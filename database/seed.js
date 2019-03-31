@@ -1,15 +1,133 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-undef */
 const db = require('./index.js');
 const Stock = require('./Stock.js');
-// const StockRepo = require('./index.js');
-// const faker = require('faker');
 
-const samplePosts = [
-{"stockName":"Hane Group","price":429.56,"week":0},
-{"stockName":"Hane Group","price":424.92,"week":1},{"stockName":"Hane Group","price":413.94,"week":2},{"stockName":"Hane Group","price":405.57,"week":3},{"stockName":"Hane Group","price":418.14,"week":4},{"stockName":"Hane Group","price":435.7,"week":5},{"stockName":"Hane Group","price":447.46,"week":6},{"stockName":"Hane Group","price":432.53,"week":7},{"stockName":"Hane Group","price":450.26,"week":8},{"stockName":"Hane Group","price":441.37,"week":9},{"stockName":"Hane Group","price":435.35,"week":10},{"stockName":"Hane Group","price":439.49,"week":11},{"stockName":"Hane Group","price":432.47,"week":12},{"stockName":"Hane Group","price":442.2,"week":13},{"stockName":"Hane Group","price":422.46,"week":14},{"stockName":"Hane Group","price":431.54,"week":15},{"stockName":"Hane Group","price":447.72,"week":16},{"stockName":"Hane Group","price":428.78,"week":17},{"stockName":"Hane Group","price":423.94,"week":18},{"stockName":"Hane Group","price":419.95,"week":19},{"stockName":"Hane Group","price":428.35,"week":20},{"stockName":"Hane Group","price":443.34,"week":21},{"stockName":"Hane Group","price":461.96,"week":22},{"stockName":"Hane Group","price":464.96,"week":23},{"stockName":"Hane Group","price":475.65,"week":24},{"stockName":"Hane Group","price":456.2,"week":25},{"stockName":"Hane Group","price":469.89,"week":26},{"stockName":"Hane Group","price":457.08,"week":27},{"stockName":"Hane Group","price":437.53,"week":28},{"stockName":"Hane Group","price":427.25,"week":29},{"stockName":"Hane Group","price":446.9,"week":30},{"stockName":"Hane Group","price":448.02,"week":31},{"stockName":"Hane Group","price":427.81,"week":32},{"stockName":"Hane Group","price":415.54,"week":33},{"stockName":"Hane Group","price":406.75,"week":34},{"stockName":"Hane Group","price":406.37,"week":35},{"stockName":"Hane Group","price":395.87,"week":36},{"stockName":"Hane Group","price":385.45,"week":37},{"stockName":"Hane Group","price":368.78,"week":38},{"stockName":"Hane Group","price":352.83,"week":39},{"stockName":"Hane Group","price":337.74,"week":40},{"stockName":"Hane Group","price":337.26,"week":41},{"stockName":"Hane Group","price":352.77,"week":42},{"stockName":"Hane Group","price":348.79,"week":43},{"stockName":"Hane Group","price":346.82,"week":44},{"stockName":"Hane Group","price":341.77,"week":45},{"stockName":"Hane Group","price":349.46,"week":46},{"stockName":"Hane Group","price":348.64,"week":47},{"stockName":"Hane Group","price":361.54,"week":48},{"stockName":"Hane Group","price":377.45,"week":49},{"stockName":"Hane Group","price":386.13,"week":50},{"stockName":"Hane Group","price":382.5,"week":51},{"stockName":"Hane Group","price":369.02,"week":52},{"stockName":"Hane Group","price":355.84,"week":53},{"stockName":"Hane Group","price":341.46,"week":54},{"stockName":"Hane Group","price":344.19,"week":55},{"stockName":"Hane Group","price":340.47,"week":56},{"stockName":"Hane Group","price":340.15,"week":57},{"stockName":"Hane Group","price":352.06,"week":58},{"stockName":"Hane Group","price":356.28,"week":59},{"stockName":"Hane Group","price":372.13,"week":60},{"stockName":"Hane Group","price":364.26,"week":61},{"stockName":"Hane Group","price":349.71,"week":62},{"stockName":"Hane Group","price":343.14,"week":63},{"stockName":"Hane Group","price":348.46,"week":64},{"stockName":"Hane Group","price":360.66,"week":65},{"stockName":"Hane Group","price":348.96,"week":66},{"stockName":"Hane Group","price":361.17,"week":67},{"stockName":"Hane Group","price":356.93,"week":68},{"stockName":"Hane Group","price":358.89,"week":69},{"stockName":"Hane Group","price":350.62,"week":70},{"stockName":"Hane Group","price":367.45,"week":71},{"stockName":"Hane Group","price":385.46,"week":72},{"stockName":"Hane Group","price":397.79,"week":73},{"stockName":"Hane Group","price":398.98,"week":74},{"stockName":"Hane Group","price":414.74,"week":75},{"stockName":"Hane Group","price":424.49,"week":76},{"stockName":"Hane Group","price":444.44,"week":77},{"stockName":"Hane Group","price":454.44,"week":78},{"stockName":"Hane Group","price":474.44,"week":79},{"stockName":"Hane Group","price":491.99,"week":80},{"stockName":"Hane Group","price":511.67,"week":81},{"stockName":"Hane Group","price":528.56,"week":82},{"stockName":"Hane Group","price":537.81,"week":83},{"stockName":"Hane Group","price":535.54,"week":84},{"stockName":"Hane Group","price":530.25,"week":85},{"stockName":"Hane Group","price":508.07,"week":86},{"stockName":"Hane Group","price":532.2,"week":87},{"stockName":"Hane Group","price":520.69,"week":88},{"stockName":"Hane Group","price":504.54,"week":89},{"stockName":"Hane Group","price":518.92,"week":90},{"stockName":"Hane Group","price":520.74,"week":91},{"stockName":"Hane Group","price":519.76,"week":92},{"stockName":"Hane Group","price":518.29,"week":93},{"stockName":"Hane Group","price":530.73,"week":94},{"stockName":"Hane Group","price":524.49,"week":95},{"stockName":"Hane Group","price":531.31,"week":96},{"stockName":"Hane Group","price":512.33,"week":97},{"stockName":"Hane Group","price":515.4,"week":98},{"stockName":"Hane Group","price":494.33,"week":99},{"stockName":"Hane Group","price":507.18,"week":100},{"stockName":"Hane Group","price":501.22,"week":101},{"stockName":"Hane Group","price":506.98,"week":102},{"stockName":"Hane Group","price":516.87,"week":103},{"stockName":"Hane Group","price":513.71,"week":104},{"stockName":"Hane Group","price":520.39,"week":105},{"stockName":"Hane Group","price":536,"week":106},{"stockName":"Hane Group","price":531.97,"week":107},{"stockName":"Hane Group","price":548.73,"week":108},{"stockName":"Hane Group","price":533.51,"week":109},{"stockName":"Hane Group","price":517.21,"week":110},{"stockName":"Hane Group","price":521.61,"week":111},{"stockName":"Hane Group","price":519.65,"week":112},{"stockName":"Hane Group","price":530.56,"week":113},{"stockName":"Hane Group","price":538.78,"week":114},{"stockName":"Hane Group","price":543.36,"week":115},{"stockName":"Hane Group","price":547.44,"week":116},{"stockName":"Hane Group","price":524.28,"week":117},{"stockName":"Hane Group","price":501.36,"week":118},{"stockName":"Hane Group","price":493.35,"week":119},{"stockName":"Hane Group","price":498.28,"week":120},{"stockName":"Hane Group","price":504.01,"week":121},{"stockName":"Hane Group","price":492.4,"week":122},{"stockName":"Hane Group","price":513.08,"week":123},{"stockName":"Hane Group","price":497.16,"week":124},{"stockName":"Hane Group","price":514.31,"week":125},{"stockName":"Hane Group","price":527.17,"week":126},{"stockName":"Hane Group","price":543.78,"week":127},{"stockName":"Hane Group","price":550.03,"week":128},{"stockName":"Hane Group","price":567.91,"week":129},{"stockName":"Hane Group","price":564.44,"week":130},{"stockName":"Hane Group","price":554.89,"week":131},{"stockName":"Hane Group","price":561.55,"week":132},{"stockName":"Hane Group","price":537.27,"week":133},{"stockName":"Hane Group","price":538.34,"week":134},{"stockName":"Hane Group","price":520.12,"week":135},{"stockName":"Hane Group","price":521.16,"week":136},{"stockName":"Hane Group","price":497.16,"week":137},{"stockName":"Hane Group","price":510.83,"week":138},{"stockName":"Hane Group","price":514.66,"week":139},{"stockName":"Hane Group","price":515.69,"week":140},{"stockName":"Hane Group","price":498.72,"week":141},{"stockName":"Hane Group","price":483.72,"week":142},{"stockName":"Hane Group","price":466.67,"week":143},{"stockName":"Hane Group","price":450.22,"week":144},{"stockName":"Hane Group","price":445.14,"week":145},{"stockName":"Hane Group","price":430.08,"week":146},{"stockName":"Hane Group","price":435.03,"week":147},{"stockName":"Hane Group","price":440.03,"week":148},{"stockName":"Hane Group","price":427.83,"week":149},{"stockName":"Hane Group","price":444.3,"week":150},{"stockName":"Hane Group","price":444.3,"week":151},{"stockName":"Hane Group","price":428.64,"week":152},{"stockName":"Hane Group","price":430.78,"week":153},{"stockName":"Hane Group","price":416.4,"week":154},{"stockName":"Hane Group","price":425.77,"week":155},{"stockName":"Hane Group","price":413.16,"week":156},{"stockName":"Hane Group","price":416.05,"week":157},{"stockName":"Hane Group","price":402.56,"week":158},{"stockName":"Hane Group","price":402.56,"week":159},{"stockName":"Hane Group","price":418.46,"week":160},{"stockName":"Hane Group","price":432.48,"week":161},{"stockName":"Hane Group","price":422.72,"week":162},{"stockName":"Hane Group","price":427.79,"week":163},{"stockName":"Hane Group","price":410.5,"week":164},{"stockName":"Hane Group","price":420.15,"week":165},{"stockName":"Hane Group","price":414.03,"week":166},{"stockName":"Hane Group","price":398.66,"week":167},{"stockName":"Hane Group","price":399.46,"week":168},{"stockName":"Hane Group","price":407.45,"week":169},{"stockName":"Hane Group","price":401.51,"week":170},{"stockName":"Hane Group","price":401.71,"week":171},{"stockName":"Hane Group","price":383.96,"week":172},{"stockName":"Hane Group","price":370.61,"week":173},{"stockName":"Hane Group","price":380.62,"week":174},{"stockName":"Hane Group","price":384.62,"week":175},{"stockName":"Hane Group","price":394.04,"week":176},{"stockName":"Hane Group","price":377.93,"week":177},{"stockName":"Hane Group","price":387.19,"week":178},{"stockName":"Hane Group","price":404.23,"week":179},{"stockName":"Hane Group","price":411.1,"week":180},{"stockName":"Hane Group","price":415.42,"week":181},{"stockName":"Hane Group","price":432.24,"week":182},{"stockName":"Hane Group","price":424.72,"week":183},{"stockName":"Hane Group","price":426.63,"week":184},{"stockName":"Hane Group","price":407.18,"week":185},{"stockName":"Hane Group","price":391.1,"week":186},{"stockName":"Hane Group","price":389.26,"week":187},{"stockName":"Hane Group","price":377.92,"week":188},{"stockName":"Hane Group","price":381.32,"week":189},{"stockName":"Hane Group","price":377.74,"week":190},{"stockName":"Hane Group","price":361.76,"week":191},{"stockName":"Hane Group","price":370.8,"week":192},{"stockName":"Hane Group","price":372.28,"week":193},{"stockName":"Hane Group","price":382.52,"week":194},{"stockName":"Hane Group","price":381.44,"week":195},{"stockName":"Hane Group","price":380.01,"week":196},{"stockName":"Hane Group","price":393.12,"week":197},{"stockName":"Hane Group","price":383.88,"week":198},{"stockName":"Hane Group","price":376.12,"week":199},{"stockName":"Hane Group","price":370.99,"week":200},{"stockName":"Hane Group","price":380.26,"week":201},{"stockName":"Hane Group","price":393.57,"week":202},{"stockName":"Hane Group","price":395.54,"week":203},{"stockName":"Hane Group","price":402.26,"week":204},{"stockName":"Hane Group","price":397.16,"week":205},{"stockName":"Hane Group","price":398.95,"week":206},{"stockName":"Hane Group","price":389.57,"week":207},{"stockName":"Hane Group","price":375.84,"week":208},{"stockName":"Hane Group","price":379.22,"week":209},{"stockName":"Hane Group","price":379.98,"week":210},{"stockName":"Hane Group","price":373.01,"week":211},{"stockName":"Hane Group","price":390.54,"week":212},{"stockName":"Hane Group","price":404.4,"week":213},{"stockName":"Hane Group","price":403.45,"week":214},{"stockName":"Hane Group","price":415.55,"week":215},{"stockName":"Hane Group","price":436.12,"week":216},{"stockName":"Hane Group","price":443.75,"week":217},{"stockName":"Hane Group","price":434.99,"week":218},{"stockName":"Hane Group","price":427.02,"week":219},{"stockName":"Hane Group","price":430.86,"week":220},{"stockName":"Hane Group","price":411.01,"week":221},{"stockName":"Hane Group","price":425.6,"week":222},{"stockName":"Hane Group","price":440.71,"week":223},{"stockName":"Hane Group","price":443.79,"week":224},{"stockName":"Hane Group","price":435.86,"week":225},{"stockName":"Hane Group","price":455.69,"week":226},{"stockName":"Hane Group","price":437.06,"week":227},{"stockName":"Hane Group","price":457.16,"week":228},{"stockName":"Hane Group","price":450.93,"week":229},{"stockName":"Hane Group","price":466.26,"week":230},{"stockName":"Hane Group","price":484.21,"week":231},{"stockName":"Hane Group","price":478.98,"week":232},{"stockName":"Hane Group","price":471.78,"week":233},{"stockName":"Hane Group","price":471.11,"week":234},{"stockName":"Hane Group","price":452.95,"week":235},{"stockName":"Hane Group","price":463.14,"week":236},{"stockName":"Hane Group","price":456.17,"week":237},{"stockName":"Hane Group","price":477.38,"week":238},{"stockName":"Hane Group","price":487.88,"week":239},{"stockName":"Hane Group","price":493.25,"week":240},{"stockName":"Hane Group","price":501.64,"week":241},{"stockName":"Hane Group","price":515.69,"week":242},{"stockName":"Hane Group","price":491.69,"week":243},{"stockName":"Hane Group","price":491.94,"week":244},{"stockName":"Hane Group","price":473.21,"week":245},{"stockName":"Hane Group","price":487.41,"week":246},{"stockName":"Hane Group","price":466.33,"week":247},{"stockName":"Hane Group","price":475.66,"week":248},{"stockName":"Hane Group","price":468.28,"week":249},{"stockName":"Hane Group","price":453.97,"week":250},{"stockName":"Hane Group","price":471.9,"week":251}]
+const samplePosts = [];
+const companyData = [
+  { id: '001', ticker: 'SNAP', company: 'Snap' },
+  { id: '002', ticker: 'TSLA', company: 'Tesla' },
+  { id: '003', ticker: 'AMZN', company: 'Amazon'},
+  { id: '004', ticker: 'TWTR', company: 'Twitter' },
+  { id: '005', ticker: 'BABA', company: 'Alibaba' },
+  { id: '006', ticker: 'BAC', company: 'Bank of America'},
+  { id: '007', ticker: 'NFLX', company: 'Netflix' },
+  { id: '008', ticker: 'NVDA', company: 'NVIDIA'},
+  { id: '009', ticker: 'DIS', company: 'Disney' },
+  { id: '010', ticker: 'PLUG', company:     'Plug Power'},
+  { id: '011', ticker: 'SQ', company:   'Square'},
+  { id: '012', ticker: 'ZNGA', company: 'Zynga'},
+  { id: '013', ticker: 'CHK', company: 'Chesapeake Energy'},
+  { id: '014', ticker: 'NIO', company:  'NIO'},
+  { id: '015', ticker: 'T', company:    'AT&T'},
+  { id: '016', ticker: 'HEXO', company:     'Hexo'},
+  { id: '017', ticker: 'MU', company:   'Micron Technology'},
+  { id: '018', ticker: 'GRPN', company:     'Groupon'},
+  { id: '019', ticker: 'SBUX', company:     'Starbucks' },
+  { id: '020', ticker: 'APHA', company:     'Aphria'},
+  { id: '021', ticker: 'RAD', company:  'Rite Aid'},
+  { id: '022', ticker: 'SIRI', company:     'Sirius XM'},
+  { id: '023', ticker: 'ATVI', company:     'Activision Blizzard'},
+  { id: '024', ticker: 'NTDOY', company:    'Nintendo'},
+  { id: '025', ticker: 'NKE', company:  'Nike'},
+  { id: '026', ticker: 'INTC', company:     'Intel'},
+  { id: '027', ticker: 'IQ', company:   'iQIYI'},
+  { id: '028', ticker: 'VOO', company:  'Vanguard'},
+  { id: '029', ticker: 'S', company:    'Sprint'},
+  { id: '030', ticker: 'WFT', company:  'Weatherford'},
+  { id: '031', ticker: 'KO', company:   'Coca-Cola'},
+  { id: '032', ticker: 'BRK', company: 'Berkshire Hathaway'},
+  { id: '033', ticker: 'TLRY', company:     'Tilray'},
+  { id: '034', ticker: 'BA', company:   'Boeing'},
+  { id: '035', ticker: 'MJ', company:   'ETFMG Alternative Harvest'},
+  { id: '036', ticker: 'JD', company:   'JD.com'},
+  { id: '037', ticker: 'V', company:    'Visa'},
+  { id: '038', ticker: 'AUY', company:  'Yamana Gold'},
+  { id: '039', ticker: 'SPY', company:  'SPDR'},
+  { id: '040', ticker: 'GERN', company:     'Geron'},
+  { id: '041', ticker: 'PYPL', company:     'PayPal'},
+  { id: '042', ticker: 'TCEHY', company:    'Tencent'},
+  { id: '043', ticker: 'GOOGL', company:    'Alphabet'},
+  { id: '044', ticker: 'CSCO', company:     'Cisco'},
+  { id: '045', ticker: 'CRM', company:  'Salesforce'},
+  { id: '046', ticker: 'ROKU', company:     'Roku'},
+  { id: '047', ticker: 'CRBP', company:     'Corbus Pharmaceuticals'},
+  { id: '048', ticker: 'DBX', company:  'Dropbox'},
+  { id: '049', ticker: 'WMT', company:  'Walmart'},
+  { id: '050', ticker: 'JCP', company:  'J.C. Penney'},
+  { id: '051', ticker: 'GM', company:   'GM'},
+  { id: '052', ticker: 'VTI', company:  'Vanguard Total'},
+  { id: '053', ticker: 'BILI', company:     'Bilibili'},
+  { id: '054', ticker: 'NOK', company:  'Nokia'},
+  { id: '055', ticker: 'GLUU', company:     'Glu Mobile'},
+  { id: '056', ticker: 'VZ', company:   'Verizon'},
+  { id: '057', ticker: 'VSLR', company:     'Vivint Solar'},
+  { id: '058', ticker: 'SHOP', company:     'Shopify'},
+  { id: '059', ticker: 'CARA', company:     'Cara Therapeutics'},
+  { id: '060', ticker: 'SNE', company:  'Sony'},
+  { id: '061', ticker: 'PFE', company:  'Pfizer'},
+  { id: '062', ticker: 'ENPH', company:     'Enphase Energy'},
+  { id: '063', ticker: 'CVS', company:  'CVS'},
+  { id: '064', ticker: 'SPOT', company:     'Spotify'},
+  { id: '065', ticker: 'COST', company:     'Costco'},
+  { id: '066', ticker: 'TRXC', company:     'TransEnterix'},
+  { id: '067', ticker: 'TWLO', company:     'Twilio'},
+  { id: '068', ticker: 'PCG', company:  'PG&E'},
+  { id: '069', ticker: 'KHC', company:  'Kraft Foods'},
+  { id: '070', ticker: 'INSY', company: 'Insys Therapeutics'},
+  { id: '071', ticker: 'AKS', company:  'AK Steel'},
+  { id: '072', ticker: 'LUV', company:  'Southwest Airlines'},
+  { id: '073', ticker: 'CRSP', company: 'CRISPR'},
+  { id: '074', ticker: 'FDX', company:  'FeDex'},
+  { id: '075', ticker: 'VKTX', company: 'Viking Therapeutics'},
+  { id: '076', ticker: 'JPM', company:  'JPMorgan Chase'},
+  { id: '077', ticker: 'DNR', company:  'Denbury'},
+  { id: '078', ticker: 'SPWR', company: 'SunPower'},
+  { id: '079', ticker: 'UAA', company:  'Under Armour'},
+  { id: '080', ticker: 'BOTZ', company: 'Global X Robotics & Artificial Intelligence ETF'},
+  { id: '081', ticker: 'SFIX', company: 'Stitch Fix'},
+  { id: '082', ticker: 'AMAT', company: 'Applied Materials'},
+  { id: '083', ticker: 'YETI', company: 'YETI'},
+  { id: '084', ticker: 'EA', company:   'EA'},
+  { id: '085', ticker: 'QCOM', company: 'Qualcomm'},
+  { id: '086', ticker: 'TGT', company:  'Target'},
+  { id: '087', ticker: 'TEVA', company: 'Teva Pharmaceutical'},
+  { id: '088', ticker: 'JNJ', company:  'Johnson & Johnson'},
+  { id: '089', ticker: 'IIPR', company: 'Innovative Industrial Properties'},
+  { id: '090', ticker: 'ACB', company:  'Aurora Cannabis'},
+  { id: '091', ticker: 'GE', company:   'GE' },
+  { id: '092', ticker: 'AAPL', company: 'Apple' },
+  { id: '093', ticker: 'F', company:    'Ford' },
+  { id: '094', ticker: 'CRON', company: 'Cronos Group'},
+  { id: '095', ticker: 'MSFT', company: 'Microsoft' },
+  { id: '096', ticker: 'GPRO', company: 'GoPro' },
+  { id: '097', ticker: 'FIT', company:  'Fitbit' },
+  { id: '098', ticker: 'AMD', company:  'AMD'},
+  { id: '099', ticker: 'FB', company:   'Facebook' },
+  { id: '100', ticker: 'CGC', company:  'Canopy Growth'}
+];
 
-const insertSampleStocks = function() {
+for (const company of companyData) {
+  const companyName = company.company;
+  let price = Math.random() * 1000;
+  for (let day = 0; day < 252; day += 1) {
+    let range = Math.floor(Math.random() * 100);
+    range *= Math.floor(Math.random() * 2) === 1 ? 0.05 : -0.047;
+    price *= (1 + range / 100);
+    price = price.toFixed(2);
+    samplePosts.push({
+      company: companyName,
+      price: Number(price),
+      day,
+      id: company.id,
+      ticker: company.ticker,
+    });
+  }
+}
+
+const insertSampleStocks = function () {
   Stock.create(samplePosts)
-  .then(() => db.close());
+    .then(() => db.close());
 };
 
 insertSampleStocks();
