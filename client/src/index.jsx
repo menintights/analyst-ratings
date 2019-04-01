@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.get('http://localhost:3000/stock/003', (stockData) => {
+    $.get('http://localhost:3000/stocks', (stockData) => {
       const priceData = [];
       stockData.map(stock => priceData.push(stock.price));
       this.setState({

@@ -11,15 +11,19 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/stock', (req, res) => {
-  db.get((data) => {
-    res.status(200).json(data);
-  });
+let stockData = [];
+
+app.get('/stocks', (req, res) => {
+  res.status(200).json(stockData);
 });
 
 app.get('/stock/:id', (req, res) => {
   db.test(req.params.id, (data) => {
-    res.status(200).json(data);
+    // console.log(data);
+    stockData = data;
+    res.redirect('/');
+    // console.log(stockData);
+    // res.status(200).json(data);
   });
 });
 
