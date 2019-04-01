@@ -25,7 +25,7 @@ class AveragePrice extends React.Component {
     let compare = '';
     let currentSpot = 0;
     let averageSpot = 0;
-    let sortPriceData = arr.slice(0).sort();
+    let sortPriceData = arr.slice(0).sort((a, b) => a - b);
     let collectPriceData = [];
     let allPriceBar = [];
     let allData = [];
@@ -51,32 +51,33 @@ class AveragePrice extends React.Component {
     }
     // console.log(currentPriceDistance, averagePriceDistance)
 
-    if (sortPriceData.length > 0) {
-      for (let i = 0, u = 0; i < sortPriceData.length; i += 1) {
-        if (sortPriceData[i] <= Number(collectPriceData[u][1])) {
-          if (allPriceBar[u] === undefined) {
-            allPriceBar[u] = [];
-          }
-          allPriceBar[u].push(sortPriceData[i]);
-        } else {
-          u += 1;
-          if (allPriceBar[u] === undefined) {
-            allPriceBar[u] = [];
-          }
-          allPriceBar[u].push(sortPriceData[i]);
+    for (let i = 0, u = 0; i < sortPriceData.length; i += 1) {
+      if (sortPriceData[i] <= Number(collectPriceData[u][1])) {
+        if (allPriceBar[u] === undefined) {
+          allPriceBar[u] = [];
         }
-      }
-      for (let i = 0; i < allPriceBar.length; i += 1) {
-        allData[i] = [];
-        allData[i].push(collectPriceData[i][0]);
-        allData[i].push(collectPriceData[i][1]);
-        if (allPriceBar[i] === undefined) {
-          allData[i].push(1);
-        } else {
-          allData[i].push(allPriceBar[i].length);
+        allPriceBar[u].push(sortPriceData[i]);
+      } else {
+        u += 1;
+        if (allPriceBar[u] === undefined) {
+          allPriceBar[u] = [];
         }
+        allPriceBar[u].push(sortPriceData[i]);
       }
     }
+    for (let i = 0; i < allPriceBar.length; i += 1) {
+      allData[i] = [];
+      allData[i].push(collectPriceData[i][0]);
+      allData[i].push(collectPriceData[i][1]);
+      if (allPriceBar[i] === undefined) {
+        allData[i].push(1);
+      } else {
+        allData[i].push(allPriceBar[i].length);
+      }
+    }
+    
+    console.log(sortPriceData, allPriceBar);
+
     percentage = Math.floor((currentPrice / average - 1) * 100);
     // Percentage that compare between current Price and average Price
     if (percentage >= 0) {
@@ -87,9 +88,9 @@ class AveragePrice extends React.Component {
 
     return (
   <div>
-   <h2>Price Paid on Robinhood</h2>
+   <h2 className='Topic'>Price Paid on Robinhood</h2>
    <div id = 'compare'>
-    <div style={{ position: 'absolute', left: currentPriceDistance - 23 }}>
+    <div style={{ position: 'absolute', left: currentPriceDistance - 23 < 15 ? 15 : currentPriceDistance - 23 }}>
       <p id = 'compare'>{compare}</p>
       <p id = 'rightNow'>Right Now</p>
     </div>
@@ -105,10 +106,11 @@ class AveragePrice extends React.Component {
 
     <div style={{ display: 'inline-block' }}>
       <div id = 'lowest'>52 Week Low ${lowest}</div>
-      <div id = 'averagePricePaid' style={{ left: averagePriceDistance }}><p style={{ margin: '0 0 0 0' }}>Average Price Paid</p><p style={{ margin: '0 0 0 0' }}>${average}</p></div>
-      <div id = 'highest' style={{
-        width: '85px', fontSize: '14px', display: 'inline-block', textAlign: 'right', position: 'absolute', left: 600,
-      }}>52 Week High ${highest}</div>
+      <div id = 'averagePricePaid' style={{ left: averagePriceDistance }}>
+        <p className='averagePricePaid'>Average Price Paid</p>
+        <p className='averagePricePaid'>${average}</p>
+      </div>
+      <div id = 'highest'>52 Week High ${highest}</div>
     </div>
   </div>
     );

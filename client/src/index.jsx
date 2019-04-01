@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import AveragePrice from './averagePrice.jsx';
+import AnalystRating from './AnalystRating.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class App extends React.Component {
   <div>
    {/* <div>Connected!</div> */}
    <AveragePrice priceData={this.state.price}/>
+   <AnalystRating/>
   </div>
     );
   }
