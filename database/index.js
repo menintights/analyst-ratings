@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Stock = require('./Stock.js');
+const Rating = require('./AnalystRating.js');
 
 const mongoUri = 'mongodb://localhost/stock';
 
@@ -13,10 +14,17 @@ const get = (callback) => {
   });
 };
 
-
 const test = (id, callback) => {
   const query = { id };
   Stock.find(query, (err, data) => {
+    if (err) console.log(err);
+    callback(data);
+  });
+};
+
+const getRating = (id, callback) => {
+  const query = { id };
+  Rating.find(query, (err, data) => {
     if (err) console.log(err);
     callback(data);
   });
@@ -26,3 +34,4 @@ module.exports = db;
 // module.exports.save = save;
 module.exports.test = test;
 module.exports.get = get;
+module.exports.getRating = getRating;

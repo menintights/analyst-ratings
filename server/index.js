@@ -27,4 +27,10 @@ app.get('/stock/:id', (req, res) => {
   });
 });
 
+app.get('/ratings/:id', (req, res) => {
+  db.getRating(req.params.id, (data) => {
+    res.status(200).json(data);
+  });
+});
+
 app.listen(port, () => { console.log(`http://localhost:${port}`); });

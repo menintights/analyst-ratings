@@ -1,4 +1,7 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import AnalystChart from './AnalystChart.jsx';
 
 class AnalystRating extends React.Component {
   constructor(props) {
@@ -10,7 +13,9 @@ class AnalystRating extends React.Component {
   render() {
     return (
       <div>
-        <h2>Hello from AnalystRating</h2>
+        <h2 className='Topic'>Analyst Ratings</h2>
+        <div className='line'></div>
+        <AnalystChart/>
       </div>
     );
   }

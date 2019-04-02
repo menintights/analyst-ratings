@@ -11,6 +11,7 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "db:setup": "node database/seed.js",
+    "rating:setup": "node database/ratingseed.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"

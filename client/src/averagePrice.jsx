@@ -75,9 +75,6 @@ class AveragePrice extends React.Component {
         allData[i].push(allPriceBar[i].length);
       }
     }
-    
-    console.log(sortPriceData, allPriceBar);
-
     percentage = Math.floor((currentPrice / average - 1) * 100);
     // Percentage that compare between current Price and average Price
     if (percentage >= 0) {
@@ -89,6 +86,7 @@ class AveragePrice extends React.Component {
     return (
   <div>
    <h2 className='Topic'>Price Paid on Robinhood</h2>
+   <div className='line'></div>
    <div id = 'compare'>
     <div style={{ position: 'absolute', left: currentPriceDistance - 23 < 15 ? 15 : currentPriceDistance - 23 }}>
       <p id = 'compare'>{compare}</p>
