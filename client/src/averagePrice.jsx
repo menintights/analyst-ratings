@@ -1,7 +1,6 @@
 /* eslint-disable prefer-const */
 /* eslint-disable max-len */
 import React from 'react';
-// import $ from 'jquery';
 // eslint-disable-next-line no-unused-vars
 import Chart from './chart.jsx';
 
