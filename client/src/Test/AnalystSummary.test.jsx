@@ -3,7 +3,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AnalystSummary from './Analyst Rating/AnalystSummary.jsx';
+import AnalystSummary from '../Analyst Rating/AnalystSummary.jsx';
 
 const wrap = shallow(
  <AnalystSummary />,
