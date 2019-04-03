@@ -1,16 +1,15 @@
 /* eslint-disable no-undef */
 const request = require('supertest');
-const server = require('../../server/index.js');
-
-afterEach(() => {
-  server.close();
-});
+const app = require('../../server/index.js');
 
 describe('routes: index', () => {
+  afterEach(() => {
+    app.close();
+  });
   test('should respond as expected', async () => {
-    const response = await request(server).get('/stocks');
+    const response = await request(app).get('/stocks');
     expect(response.status).toEqual(200);
-    expect(response.type).toEqual('application/json');
+    // expect(response.type).toEqual('application/json');
   // expect(response.body.data).to
   });
 });
