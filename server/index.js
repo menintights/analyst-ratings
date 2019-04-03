@@ -15,14 +15,22 @@ let stockData = [];
 let ratingsData = [];
 
 app.get('/stocks', (req, res) => {
-  res.status(200).json(stockData);
+  // set Default data equal to 001
+  if (stockData.length === 0) {
+    db.getPaidPrice('001', (data) => {
+      stockData = data;
+      res.status(200).json(stockData);
+    });
+  } else {
+    res.status(200).json(stockData);
+  }
 });
 
 app.get('/stock/:id', (req, res) => {
   db.getRating(req.params.id, (data) => {
     ratingsData = data;
   });
-  db.test(req.params.id, (data) => {
+  db.getPaidPrice(req.params.id, (data) => {
     // console.log(data);
     stockData = data;
     res.redirect('/');
@@ -32,9 +40,16 @@ app.get('/stock/:id', (req, res) => {
 });
 
 app.get('/ratings', (req, res) => {
-  res.status(200).json(ratingsData);
+  // set Default data equal to 001
+  if (ratingsData.length === 0) {
+    db.getRating('001', (data) => {
+      ratingsData = data;
+      res.status(200).json(ratingsData);
+    });
+  } else {
+    res.status(200).json(ratingsData);
+  }
 });
-
 // app.get('/ratings/:id', (req, res) => {
 //   db.getRating(req.params.id, (data) => {
 //     ratingsData = data;

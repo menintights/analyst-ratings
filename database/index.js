@@ -14,7 +14,7 @@ const get = (callback) => {
   });
 };
 
-const test = (id, callback) => {
+const getPaidPrice = (id, callback) => {
   const query = { id };
   Stock.find(query, (err, data) => {
     if (err) console.log(err);
@@ -31,7 +31,6 @@ const getRating = (id, callback) => {
 };
 
 module.exports = db;
-// module.exports.save = save;
-module.exports.test = test;
+module.exports.getPaidPrice = getPaidPrice;
 module.exports.get = get;
 module.exports.getRating = getRating;
