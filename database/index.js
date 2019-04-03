@@ -9,7 +9,7 @@ const db = mongoose.connection;
 
 const get = (callback) => {
   Stock.find((err, data) => {
-    if (err) console.log(err);
+    if (err) callback(err);
     callback(data);
   });
 };
@@ -17,7 +17,7 @@ const get = (callback) => {
 const getPaidPrice = (id, callback) => {
   const query = { id };
   Stock.find(query, (err, data) => {
-    if (err) console.log(err);
+    if (err) callback(err);
     callback(data);
   });
 };
@@ -25,7 +25,7 @@ const getPaidPrice = (id, callback) => {
 const getRating = (id, callback) => {
   const query = { id };
   Rating.find(query, (err, data) => {
-    if (err) console.log(err);
+    if (err) callback(err);
     callback(data);
   });
 };
