@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import AveragePrice from './averagePrice.jsx';
-import AnalystRating from './AnalystRating.jsx';
+import AnalystRating from './Analyst Rating/AnalystRating.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       stock: [],
       price: [],
+      ratings: [],
     };
   }
 
@@ -24,14 +25,21 @@ class App extends React.Component {
         price: priceData,
       });
     });
+
+    $.get('http://localhost:3000/ratings', (Data) => {
+      const ratingsData = [];
+      Data.map(ratings => ratingsData.push(ratings.rating));
+      this.setState({
+        ratings: ratingsData,
+      });
+    });
   }
 
   render() {
     return (
   <div>
-   {/* <div>Connected!</div> */}
    <AveragePrice priceData={this.state.price}/>
-   <AnalystRating/>
+   <AnalystRating ratings={this.state.ratings}/>
   </div>
     );
   }
